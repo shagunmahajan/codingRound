@@ -1,53 +1,65 @@
-import com.sun.javafx.PlatformUtil;
+package pageFunction;
+
+
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.Select;
-import org.testng.annotations.Test;
 
-public class HotelBookingTest {
 
-    WebDriver driver = new ChromeDriver();
+public class HotelBookingPageFunction {
 
-    @FindBy(linkText = "Hotels")
-    private WebElement hotelLink;
+	WebDriver driver = new ChromeDriver();
 
-    @FindBy(id = "Tags")
-    private WebElement localityTextBox;
+//    @FindBy(linkText = "Hotels")
+//    private WebElement hotelLink;
+//
+//    @FindBy(id = "Tags")
+//    private WebElement localityTextBox;
+//
+//    @FindBy(id = "SearchHotelsButton")
+//    private WebElement searchButton;
+//
+//    @FindBy(id = "travellersOnhome")
+//    private WebElement travellerSelection;
 
-    @FindBy(id = "SearchHotelsButton")
-    private WebElement searchButton;
-
-    @FindBy(id = "travellersOnhome")
-    private WebElement travellerSelection;
-
-    @Test
-    public void shouldBeAbleToSearchForHotels() {
-        setDriverPath();
-
-        driver.get("https://www.cleartrip.com/");
-        hotelLink.click();
-
-        localityTextBox.sendKeys("Indiranagar, Bangalore");
-
-        new Select(travellerSelection).selectByVisibleText("1 room, 2 adults");
-        searchButton.click();
-
-        driver.quit();
-
+    private WebElement hotelLink = driver.findElement(By.linkText("Hotels"));
+    private WebElement localityTextBox = driver.findElement(By.id("Tags"));
+    private WebElement searchButton = driver.findElement(By.id("SearchHotelsButton"));
+    private WebElement travelerSelection = driver.findElement(By.id("travellersOnhome"));
+    
+    //click on hotel link
+    public void clickOnHotelLnk() {
+    	hotelLink.click();
+    }
+    
+    //provide locality
+    public void provideLocality(String locality) {
+    	localityTextBox.sendKeys(locality);
     }
 
-    private void setDriverPath() {
-        if (PlatformUtil.isMac()) {
-            System.setProperty("webdriver.chrome.driver", "chromedriver");
-        }
-        if (PlatformUtil.isWindows()) {
-            System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
-        }
-        if (PlatformUtil.isLinux()) {
-            System.setProperty("webdriver.chrome.driver", "chromedriver_linux");
-        }
+    //provide traveler selection
+    public void provideTravelerSelection(String selection) {
+    	new Select(travelerSelection).selectByVisibleText(selection);
     }
+    
+    //click on search button
+    public void clickSearchBtn() {
+    	searchButton.click();
+    }
+    
+    
+//    private void setDriverPath() {
+//        if (PlatformUtil.isMac()) {
+//            System.setProperty("webdriver.chrome.driver", "chromedriver");
+//        }
+//        if (PlatformUtil.isWindows()) {
+//            System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
+//        }
+//        if (PlatformUtil.isLinux()) {
+//            System.setProperty("webdriver.chrome.driver", "chromedriver_linux");
+//        }
+//    }
 
 }
