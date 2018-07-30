@@ -1,8 +1,12 @@
 package pageFunction;
-import org.openqa.selenium.By;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
+
+import utility.commonFunction;
 
 public class SignInPageFunction {
 
@@ -10,13 +14,24 @@ public class SignInPageFunction {
 
 	public SignInPageFunction(WebDriver driver) {
 		this.driver = driver;
+		PageFactory.initElements(driver, this);
 	}
 	
-	private WebElement yourTrips = driver.findElement(By.linkText("Your trips"));
-    private WebElement signInLnk = driver.findElement(By.id("SignIn"));
-    private WebElement signInBtn = driver.findElement(By.id("signInButton"));
-    private WebElement errorMsg = driver.findElement(By.id("errors1"));
-    
+	@FindBy(linkText = "Your trips")
+	private WebElement yourTrips;
+	
+	@FindBy(id = "SignIn")
+	private WebElement signInLnk;
+	
+	@FindBy(id = "signInButton")
+	private WebElement signInBtn;
+	
+	@FindBy(id = "errors1")
+	private WebElement errorMsg;
+	
+	@FindBy(id = "modal_window")
+	private WebElement frame;
+	    
     //click your trip option
     public void clickYourTrip() {
     	yourTrips.click();
@@ -25,10 +40,12 @@ public class SignInPageFunction {
     //click on sign In Link
     public void clickSignInLnk() {
     	signInLnk.click();
+    	commonFunction.waitFor(3000);
     }
     
     //click on sign In button
     public void clickSignInBtn() {
+    	driver.switchTo().frame(frame);
     	signInBtn.click();
     }
     

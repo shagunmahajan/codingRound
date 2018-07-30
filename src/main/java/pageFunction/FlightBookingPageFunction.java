@@ -1,6 +1,5 @@
 package pageFunction;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -8,7 +7,6 @@ import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 import java.util.List;
 import utility.commonFunction;
-
 
 public class FlightBookingPageFunction {
 
@@ -44,16 +42,6 @@ public class FlightBookingPageFunction {
     @FindBy(className = "searchSummary")
     private WebElement searchSummary;
     
-    
-//    private WebElement oneWayTab = driver.findElement(By.id("OneWay"));
-//    private WebElement fromTxtBox = driver.findElement(By.id("FromTag"));
-//    private List<WebElement> fromCityList = driver.findElements(By.xpath("//*[@id='ui-id-1']//li"));
-//    private WebElement toTxtBox = driver.findElement(By.id("ToTag"));
-//    private List<WebElement> toCityList = driver.findElements(By.xpath("//*[@id='ui-id-2']//li"));
-//    private WebElement date = driver.findElement(By.xpath("//*[@id='ui-datepicker-div']/div[2]/table/tbody/tr[3]/td[7]/a"));
-//    private WebElement searchBtn = driver.findElement(By.id("SearchBtn"));
-//    private WebElement searchSummary = driver.findElement(By.className("searchSummary"));
-//    
     //click on one way tab
     public void selectOneWayTab() {
     	oneWayTab.click();

@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite thread-count="1" configfailurepolicy="continue" guice-stage="DEVELOPMENT" name="Failed suite [codingRound]" parallel="tests">
+<suite thread-count="3" configfailurepolicy="continue" guice-stage="DEVELOPMENT" name="Failed suite [codingRound]" parallel="tests">
   <test name="codingRound(failed)" parallel="tests">
     <classes>
-      <class name="testScript.FlightBookingTest">
+      <class name="testScript.SignInTest">
         <methods>
-          <include name="testThatResultsAppearForAOneWayJourney"/>
+          <include name="shouldThrowAnErrorIfSignInDetailsAreMissing"/>
           <include name="openApplication"/>
           <include name="closeBrowser"/>
         </methods>
-      </class> <!-- testScript.FlightBookingTest -->
+      </class> <!-- testScript.SignInTest -->
     </classes>
   </test> <!-- codingRound(failed) -->
 </suite> <!-- Failed suite [codingRound] -->

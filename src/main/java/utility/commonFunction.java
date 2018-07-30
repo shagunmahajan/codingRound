@@ -5,6 +5,8 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 
+import com.sun.javafx.PlatformUtil;
+
 import utility.Exception;
 
 
@@ -13,16 +15,16 @@ public class commonFunction{
 	public static WebDriver driver;
 	
 	private void setDriverPath() {
-	//  if (PlatformUtil.isMac()) {
-	//      System.setProperty("webdriver.chrome.driver", "chromedriver");
-	//  }
-	//  if (PlatformUtil.isWindows()) {
-	//      System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
-	//  }
-	//  if (PlatformUtil.isLinux()) {
-	//      System.setProperty("webdriver.chrome.driver", "chromedriver_linux");
-	//  }
-		System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
+	  if (PlatformUtil.isMac()) {
+	      System.setProperty("webdriver.chrome.driver", "chromedriver");
+	  }
+	  if (PlatformUtil.isWindows()) {
+	      System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
+	  }
+	  if (PlatformUtil.isLinux()) {
+	      System.setProperty("webdriver.chrome.driver", "chromedriver_linux");
+	  }
+//		System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
 	}
 	
 	private void initializeBrowser() {
