@@ -3,7 +3,8 @@ package pageFunction;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 import java.util.List;
 import utility.commonFunction;
@@ -11,34 +12,48 @@ import utility.commonFunction;
 
 public class FlightBookingPageFunction {
 
-	WebDriver driver = new ChromeDriver();
-
-//    private void waitFor(int durationInMilliSeconds) {
-//        try {
-//            Thread.sleep(durationInMilliSeconds);
-//        } catch (InterruptedException e) {
-//            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
-//        }
-//    }
-
-//    private boolean isElementPresent(By by) {
-//        try {
-//            driver.findElement(by);
-//            return true;
-//        } catch (NoSuchElementException e) {
-//            return false;
-//        }
-//    }
+	WebDriver driver;
+	
+	public FlightBookingPageFunction(WebDriver driver){
+		// TODO Auto-generated constructor stub	
+		this.driver = driver;
+    	PageFactory.initElements(driver, this);
+	}
+	
+	@FindBy(id = "OneWay")
+    private WebElement oneWayTab;
     
-    private WebElement oneWayTab = driver.findElement(By.id("OneWay"));
-    private WebElement fromTxtBox = driver.findElement(By.id("FromTag"));
-    private List<WebElement> fromCityList = driver.findElements(By.id("ui-id-1"));
-    private WebElement toTxtBox = driver.findElement(By.id("toTag"));
-    private List<WebElement> toCityList = driver.findElements(By.id("ui-id-2"));
-    private WebElement date = driver.findElement(By.xpath("//*[@id='ui-datepicker-div']/div[1]/table/tbody/tr[3]/td[7]/a"));
-    private WebElement searchBtn = driver.findElement(By.id("SearchBtn"));
-    private WebElement searchSummary = driver.findElement(By.className("searchSummary"));
+    @FindBy(id = "FromTag")
+    private WebElement fromTxtBox;
     
+    @FindBy(xpath = "//*[@id='ui-id-1']//li")
+    private List<WebElement> fromCityList;
+    
+    @FindBy(id = "ToTag")
+    private WebElement toTxtBox;
+    
+    @FindBy(xpath = "//*[@id='ui-id-2']//li")
+    private List<WebElement> toCityList;
+    
+    @FindBy(xpath = "//*[@id='ui-datepicker-div']/div[2]/table/tbody/tr[3]/td[7]/a")
+    private WebElement date;
+    
+    @FindBy(id = "SearchBtn")
+    private WebElement searchBtn;
+    
+    @FindBy(className = "searchSummary")
+    private WebElement searchSummary;
+    
+    
+//    private WebElement oneWayTab = driver.findElement(By.id("OneWay"));
+//    private WebElement fromTxtBox = driver.findElement(By.id("FromTag"));
+//    private List<WebElement> fromCityList = driver.findElements(By.xpath("//*[@id='ui-id-1']//li"));
+//    private WebElement toTxtBox = driver.findElement(By.id("ToTag"));
+//    private List<WebElement> toCityList = driver.findElements(By.xpath("//*[@id='ui-id-2']//li"));
+//    private WebElement date = driver.findElement(By.xpath("//*[@id='ui-datepicker-div']/div[2]/table/tbody/tr[3]/td[7]/a"));
+//    private WebElement searchBtn = driver.findElement(By.id("SearchBtn"));
+//    private WebElement searchSummary = driver.findElement(By.className("searchSummary"));
+//    
     //click on one way tab
     public void selectOneWayTab() {
     	oneWayTab.click();
@@ -76,15 +91,4 @@ public class FlightBookingPageFunction {
     	Assert.assertTrue(searchSummary.isDisplayed(), "summary is not present");
     }
     
-//    private void setDriverPath() {
-//        if (PlatformUtil.isMac()) {
-//            System.setProperty("webdriver.chrome.driver", "chromedriver");
-//        }
-//        if (PlatformUtil.isWindows()) {
-//            System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
-//        }
-//        if (PlatformUtil.isLinux()) {
-//            System.setProperty("webdriver.chrome.driver", "chromedriver_linux");
-//        }
-//    }
 }

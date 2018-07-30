@@ -5,10 +5,12 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 
+import utility.Exception;
+
 
 public class commonFunction{
 
-	WebDriver driver;
+	public static WebDriver driver;
 	
 	private void setDriverPath() {
 	//  if (PlatformUtil.isMac()) {
@@ -32,7 +34,7 @@ public class commonFunction{
         try {
             Thread.sleep(durationInMilliSeconds);
         } catch (InterruptedException e) {
-            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+        	throw new Exception("Element not found");  //To change body of catch statement use File | Settings | File Templates.
         }
     }
 	
@@ -41,6 +43,7 @@ public class commonFunction{
 		 setDriverPath();
 		 initializeBrowser();	
 		 driver.get("https://www.cleartrip.com/");
+		 waitFor(2000);
 	}
 	 
 	@AfterMethod

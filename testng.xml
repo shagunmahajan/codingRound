@@ -2,10 +2,13 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="codingRound" verbose="1" parallel="tests"
 	thread-count="1" configfailurepolicy="continue">
-	<test name="codingRound" annotations="JDK"
+	<test name="codingRound"
 		preserve-order="true">
-		<packages>
-			<package name="test" />
-		</packages>
+<!-- 		<packages> -->
+<!-- 			<package name="testScript" /> -->
+<!-- 		</packages> -->
+		<classes>
+			<class name="testScript.FlightBookingTest" />
+		</classes>
 	</test>
 </suite>

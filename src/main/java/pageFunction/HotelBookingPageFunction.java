@@ -4,26 +4,17 @@ package pageFunction;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
 
 
 public class HotelBookingPageFunction {
 
-	WebDriver driver = new ChromeDriver();
+	WebDriver driver;
 
-//    @FindBy(linkText = "Hotels")
-//    private WebElement hotelLink;
-//
-//    @FindBy(id = "Tags")
-//    private WebElement localityTextBox;
-//
-//    @FindBy(id = "SearchHotelsButton")
-//    private WebElement searchButton;
-//
-//    @FindBy(id = "travellersOnhome")
-//    private WebElement travellerSelection;
-
+	public HotelBookingPageFunction(WebDriver driver) {
+		this.driver = driver;
+	}
+	
     private WebElement hotelLink = driver.findElement(By.linkText("Hotels"));
     private WebElement localityTextBox = driver.findElement(By.id("Tags"));
     private WebElement searchButton = driver.findElement(By.id("SearchHotelsButton"));
@@ -49,17 +40,4 @@ public class HotelBookingPageFunction {
     	searchButton.click();
     }
     
-    
-//    private void setDriverPath() {
-//        if (PlatformUtil.isMac()) {
-//            System.setProperty("webdriver.chrome.driver", "chromedriver");
-//        }
-//        if (PlatformUtil.isWindows()) {
-//            System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
-//        }
-//        if (PlatformUtil.isLinux()) {
-//            System.setProperty("webdriver.chrome.driver", "chromedriver_linux");
-//        }
-//    }
-
 }
